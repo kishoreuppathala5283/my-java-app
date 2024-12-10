@@ -18,8 +18,8 @@ Thumbs.db
 # Log files
 *.log
 
-# Maven Wrapper files
-.mvn/
+# Remove the following line to stop ignoring the .mvn folder
+#.mvn/
 
 # .env or environment variables (if present)
 .env
