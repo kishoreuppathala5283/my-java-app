@@ -1,5 +1,5 @@
-# Use the official OpenJDK image as the base image
-FROM openjdk:17-jre-slim as build
+# Use the official OpenJDK image as the base image for the build stage
+FROM openjdk:17-jdk-slim as build
 
 # Set the working directory in the container
 WORKDIR /app
@@ -18,17 +18,18 @@ COPY src ./src
 # Build the application
 RUN ./mvnw clean package -DskipTests
 
-# Use a smaller OpenJDK runtime image for the final image
-FROM openjdk:17-jre-slim
+# Use the same OpenJDK JDK image for the final runtime image
+FROM openjdk:17-jdk-slim
 
 # Set the working directory for the final image
 WORKDIR /app
 
 # Copy the JAR file from the build stage into the runtime image
+# Make sure the JAR file name is correct (adjust if necessary)
 COPY --from=build /app/target/demo-0.0.1-SNAPSHOT.jar app.jar
 
 # Expose the application port
-EXPOSE 8086
+EXPOSE 8080
 
 # Command to run the application
 ENTRYPOINT ["java", "-jar", "app.jar"]
