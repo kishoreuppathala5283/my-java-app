@@ -1,0 +1,19 @@
+package com.example.demo.controller;
+
+import org.springframework.boot.web.servlet.error.ErrorController;
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class CustomErrorController implements ErrorController {
+
+    @Override
+    public String getErrorPath() {
+        return "/error"; // This method defines the custom error mapping
+    }
+
+    @RequestMapping("/error")
+    public String handleError() {
+        // You can return a custom error view here or handle it as needed
+        return "error"; // This can be an error.html page
+    }
+}
