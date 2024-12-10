@@ -1,25 +1,12 @@
-# Maven
+# Ignore target files, but keep Maven wrapper
 target/
 .idea/
 *.iml
 .project
 .classpath
-
-# Eclipse
 .settings/
 
-# IntelliJ IDEA
-.idea/
-
-# OS generated files
-.DS_Store
-Thumbs.db
-
-# Log files
-*.log
-
-# Remove the following line to stop ignoring the .mvn folder
-#.mvn/
-
-# .env or environment variables (if present)
-.env
+# Maven Wrapper files should NOT be ignored
+.mvn/
+mvnw
+mvnw.cmd
