@@ -49,6 +49,13 @@
             <optional>true</optional>
             <version>${spring-boot.version}</version> <!-- Use the version property -->
         </dependency>
+
+        <!-- Spring Boot Actuator (optional, for monitoring and management) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
     </dependencies>
 
     <!-- Configure the build process -->
@@ -70,9 +77,29 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot.version}</version> <!-- Use the Spring Boot version -->
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal> <!-- Repackage the JAR as executable with all dependencies -->
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Add Maven Jar Plugin to specify the Main-Class attribute -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <archive>
+                        <manifestEntries>
+                            <Main-Class>com.example.demo.DemoApplication</Main-Class> <!-- Your main class -->
+                        </manifestEntries>
+                    </archive>
+                </configuration>
             </plugin>
         </plugins>
     </build>
 
 </project>
-
