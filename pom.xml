@@ -102,13 +102,4 @@
         </plugins>
     </build>
 
-    <mirrors>
-        <mirror>
-          <id>nexus</id>
-          <name>nexus</name>
-          <url>http://localhost:8081/repository/maven-snapshots/</url>
-          <mirrorOf>*</mirrorOf>
-        </mirror>
-    </mirrors> 
-
 </project>
